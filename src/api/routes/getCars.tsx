@@ -12,7 +12,6 @@ export const fetchGetCarData = async (
 ) => {
   try {
     const res = await api.get<apiResponse>("/lamborghini.json");
-    console.log("Response:", res.data);
     const carData = res.data.cars.find((car) => car.id === id);
 
     setCarDataCallback(carData);
