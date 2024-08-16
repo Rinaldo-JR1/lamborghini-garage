@@ -3,15 +3,20 @@ import { CarModel } from "../../components/CardView/props";
 import { api } from "../config";
 
 interface apiResponse {
-    cars: CarModel[]
+  cars: CarModel[];
 }
 
-export const fetchGetCarData = async (id: number) => {
-    try {
-        await api.get<apiResponse>("/lamborghini.json").then((response) => {
-            return response.data.cars.find((car) => car.id === 1) || null;
-        })
-    } catch (error) {
-        console.error(error);
-    }
-}
+export const fetchGetCarData = async (
+  id: number,
+  setCarDataCallback: Dispatch<SetStateAction<CarModel |  undefined>>
+) => {
+  try {
+    const res = await api.get<apiResponse>("/lamborghini.json");
+    console.log("Response:", res.data);
+    const carData = res.data.cars.find((car) => car.id === id);
+
+    setCarDataCallback(carData);
+  } catch (error) {
+    console.error(error);
+  }
+};

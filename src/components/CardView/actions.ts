@@ -2,12 +2,12 @@ import { Dispatch, SetStateAction } from "react";
 import { CarModel } from "./props";
 import { fetchGetCarData } from "../../api/routes/getCars";
 
-export const loadCarData = async (id: number, setCarData: Dispatch<SetStateAction<CarModel | null | undefined>>) => {
+export const loadCarData = async (
+  id: number,
+  setCarData: Dispatch<SetStateAction<CarModel | undefined>>
+) => {
   try {
-    const carData = await fetchGetCarData(id);
-    if (carData != null) {
-      setCarData(carData);
-    }
+    await fetchGetCarData(id, setCarData);
   } catch (error) {
     console.error(error);
     setCarData(undefined);
