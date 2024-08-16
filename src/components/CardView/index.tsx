@@ -9,7 +9,7 @@ import { CarDetails } from "../CarDetails";
 import { LogoBox } from "../LogoBox";
 import { PressControls } from "../PressControls";
 import { CarModel } from "./props";
-import { loadCarData } from "./actions";
+import { loadCarData } from "../../functions/cardViewActions/actions";
 
 export function CardView() {
   const [carData, setCarData] = useState<CarModel>();
@@ -23,11 +23,14 @@ export function CardView() {
     <View style={styles.imageContainer}>
       <LogoBox />
       <Divider />
-      <CarDetails model={carData ? carData.carName : "Lamborghini"} name={carData ? carData.price : ""} />
-      <CarImage />
+      <CarDetails
+        model={carData ? carData.carName : "Lamborghini"}
+        name={carData ? carData.price : ""}
+      />
+      <CarImage id={carData ? carData.id : 0} />
       <Divider />
       <BuyButton />
-      <PressControls />
+      <PressControls carData={carData} setCarData={setCarData} />
     </View>
   );
 }
