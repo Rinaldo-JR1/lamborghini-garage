@@ -5,7 +5,9 @@ import { fetchGetCarData } from "../../api/routes/getCars";
 export const loadCarData = async (id: number, setCarData: Dispatch<SetStateAction<CarModel | null | undefined>>) => {
   try {
     const carData = await fetchGetCarData(id);
-    setCarData(carData);
+    if (carData != null) {
+      setCarData(carData);
+    }
   } catch (error) {
     console.error(error);
     setCarData(undefined);
