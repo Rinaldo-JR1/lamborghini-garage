@@ -25,7 +25,7 @@ export function CardView() {
       <Divider />
       <CarDetails
         model={carData ? carData.carName : "Lamborghini"}
-        name={carData ? carData.price : ""}
+        price={carData ? carData.price : ""}
       />
       <CarImage id={carData ? carData.id : 0} />
       <Divider />
