@@ -10,14 +10,14 @@ interface props {
   setCarData: Dispatch<SetStateAction<CarModel | undefined>>;
 }
 
-export function PressControls({carData,setCarData}: props) {
+export function PressControls({ carData, setCarData }: props) {
   return (
     <View style={styles.priceLabelContainer}>
       <Button
         title="<"
         color={"#01A6B3"}
         onPress={() => {
-          handleNextItem(carData, setCarData);
+          handlePreviousItem(carData, setCarData);
         }}
       />
       <Text style={styles.priceLabel}>Valor</Text>
@@ -25,7 +25,7 @@ export function PressControls({carData,setCarData}: props) {
         title=">"
         color={"#01A6B3"}
         onPress={() => {
-          handlePreviousItem(carData, setCarData);
+          handleNextItem(carData, setCarData);
         }}
       />
     </View>
